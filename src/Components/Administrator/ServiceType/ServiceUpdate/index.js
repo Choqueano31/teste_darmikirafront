@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import moment from "moment";
 import React, { useState } from "react";
 import fireDb from "../../../../firebase";
-import image from "../../../../images/adm.png";
+import image from "../../../../images/admin.jpg";
 import {
   Container,
   Label,
@@ -19,14 +19,14 @@ const validate = (values) => {
 
   console.log(values);
   if (!values.nome) {
-    errors.nome = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.nome = <p style={{ color: "red" }}>Obrigatório</p>;
   }
   if (!values.descricao) {
-    errors.descricao = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.descricao = <p style={{ color: "red" }}>Obrigatório</p>;
   }
 
   if (!values.preco) {
-    errors.preco = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.preco = <p style={{ color: "red" }}>Obrigatório</p>;
   }
 
   return errors;
@@ -98,7 +98,7 @@ function ServiceUpdate({ info, infoId }) {
               backgroundImage: ` url(${image})`,
             }}
           >
-            <Title> AREA ADMINISTRATIVA</Title>
+            <Title> ÁREA ADMINISTRATIVA</Title>
           </Container>
           <SubTitle> EDITAR TIPO DE ATENDIMENTO</SubTitle>
           <Paragraph>

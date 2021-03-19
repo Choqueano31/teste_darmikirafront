@@ -15,7 +15,8 @@ export const Container = styled.div`
 `;
 export const Title = styled.h1`
   color: white;
-  text-shadow: black 0.1em 0.1em 0.2em;
+  text-shadow: black 0.2em 0.1em 0.2em;
+  margin-bottom: 100px;
 `;
 export const Paragraph = styled.p`
   display: flex;

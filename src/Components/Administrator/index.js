@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import React, { useState } from "react";
-import image from "../../images/adm.png";
+import image from "../../images/admin.jpg";
 import ScheduleList from "../Administrator/ScheduleList";
 import {
   Column,
@@ -46,11 +46,11 @@ function Adminstrador() {
                           backgroundImage: ` url(${image})`,
                         }}
                       >
-                        <Title> AREA ADMINISTRATIVA</Title>
+                        <Title> ÁREA ADMINISTRATIVA</Title>
                       </Container>
                       <Paragraph>
                         {" "}
-                        Area destinada para Criar, Alterar ou Excluir os tipos
+                        Área destinada para Criar, Alterar ou Excluir os tipos
                         de Atendimentos,além de Visualizar os Agendamentos
                         cadastrados para que após feito o serviço, mudar seu
                         status para Finalizado ou Cancelado de acordo com o

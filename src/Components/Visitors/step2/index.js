@@ -13,10 +13,10 @@ const validate = (values) => {
   const errors = {};
 
   if (!values.atendimento) {
-    errors.atendimento = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.atendimento = <p style={{ color: "red" }}>Obrigatório</p>;
   }
   if (!values.descricao) {
-    errors.descricao = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.descricao = <p style={{ color: "red" }}>Obrigatório</p>;
   }
 
   // if (!values.data) {

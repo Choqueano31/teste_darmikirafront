@@ -9,16 +9,19 @@ import { Container, Label, Line, Paragraph, Title } from "../styles";
 const validate = (values) => {
   const errors = {};
 
-  console.log(values);
   if (!values.motor) {
-    errors.motor = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.motor = <p style={{ color: "red" }}>Obrigatório</p>;
   }
   if (!values.placa) {
-    errors.placa = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.placa = <p style={{ color: "red" }}>Obrigatório</p>;
+  } else if (values.placa.length > 7 || values.placa.length < 7) {
+    errors.placa = <p style={{ color: "red" }}>Insira uma Placa Válida</p>;
   }
 
   if (!values.nome) {
-    errors.nome = <p style={{ color: "red" }}>obrigatório</p>;
+    errors.nome = <p style={{ color: "red" }}>Obrigatório</p>;
+  } else if (!/^[A-Z]/i.test(values.nome)) {
+    errors.nome = <p style={{ color: "red" }}>Insira um nome válido</p>;
   }
 
   return errors;
@@ -38,7 +41,7 @@ function Visitors({ name1, placa1, motor1 }) {
   function newPage() {
     setNext(!next);
   }
-  console.log(name, placa, motorValue);
+
   const formik = useFormik({
     initialValues: {
       motor: motor1 || "",
