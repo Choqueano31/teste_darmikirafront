@@ -25,7 +25,6 @@ const validate = (values) => {
 };
 
 function Visitors({ name1, placa1, motor1 }) {
-  const [motor, setMotor] = useState("");
   const [next, setNext] = useState(false);
   const [motorValue, setMotorValue] = useState("");
   const [placa, setPlaca] = useState("");

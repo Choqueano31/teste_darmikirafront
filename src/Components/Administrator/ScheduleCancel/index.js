@@ -1,4 +1,4 @@
-import { Button, Card, Modal, notification } from "antd";
+import { Button, Card } from "antd";
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import fireDb from "../../../firebase";

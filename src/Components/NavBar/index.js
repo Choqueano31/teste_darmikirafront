@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Bars,
-  Nav,
-  NavBtn,
-  NavBtnLink,
-  NavLink,
-  NavMenu,
-} from "./NavBarElements";
 import image from "../../images/logo2.png";
+import { Bars, Nav, NavLink, NavMenu } from "./NavBarElements";
 function NavBar() {
   return (
     <>
