@@ -38,6 +38,22 @@ export const Label = styled.div`
   justify-content: space-evenly;
   margin-top: 20px;
 `;
+export const List = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  border: 2px solid powderblue;
+  border-radius: 2px;
+  padding: 5px;
+`;
+
+export const Column = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+`;
 export const SubTitle = styled.div`
   display: flex;
   justify-content: center;

@@ -12,12 +12,12 @@ function NavBar() {
   return (
     <>
       <Nav>
-        <NavLink to="/Home">
+        <NavLink to="/">
           <img src={image} style={{ height: 50, width: 50 }} alt="logo" />
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/Home" activeStyle>
+          <NavLink to="/" activeStyle>
             Página Inicial
           </NavLink>
           <NavLink to="/services" activeStyle>
@@ -27,9 +27,9 @@ function NavBar() {
             Adminstrador
           </NavLink>
         </NavMenu>
-        <NavBtn>
+        {/* <NavBtn>
           <NavBtnLink to="/signin"> Entrar</NavBtnLink>
-        </NavBtn>
+        </NavBtn> */}
       </Nav>
     </>
   );

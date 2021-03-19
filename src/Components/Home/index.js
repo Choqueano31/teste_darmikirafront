@@ -30,7 +30,12 @@ function Home() {
           }}
         >
           BEM VINDO
-          <h5>
+          <h5
+            style={{
+              color: "white",
+              textShadow: "black 0.1em 0.1em 0.2em",
+            }}
+          >
             Você está no Nosso Serviço de Atendimento Online <br />
           </h5>
         </h2>
