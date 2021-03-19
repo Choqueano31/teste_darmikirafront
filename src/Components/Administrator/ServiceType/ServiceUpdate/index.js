@@ -1,8 +1,9 @@
 import { Button, Input, notification } from "antd";
 import "antd/dist/antd.css";
 import { useFormik } from "formik";
+import moment from "moment";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import fireDb from "../../../../firebase";
 import image from "../../../../images/adm.png";
 import {
   Container,
@@ -31,9 +32,9 @@ const validate = (values) => {
   return errors;
 };
 
-function ServiceUpdate({ info }) {
+function ServiceUpdate({ info, infoId }) {
   const [returnAdm, setReturnAdm] = useState(false);
-  const history = useHistory();
+
   const openNotificationWithIcon = (type) => {
     if (type === "error") {
       notification[type]({
@@ -54,9 +55,9 @@ function ServiceUpdate({ info }) {
 
   const formik = useFormik({
     initialValues: {
-      nome: info.nome || "",
+      nome: info.name || "",
       descricao: info.descricao || "",
-      preco: info.Preco || "",
+      preco: info.preco || "",
       data: new Date(),
       // data: String(date),
     },
@@ -65,10 +66,22 @@ function ServiceUpdate({ info }) {
 
     onSubmit: (values) => {
       try {
-        alert(JSON.stringify(values, null, 2));
         openNotificationWithIcon("success");
+        fireDb.child(`service/${infoId}`).set(
+          {
+            name: values.nome,
+            descricao: values.descricao,
+            preco: values.preco,
+            data: moment(new Date()).format("DD/MM/YYYY"),
+          },
+          (err) => {
+            if (err) {
+              console.log(err);
+            }
+          }
+        );
         setTimeout(() => {
-          history.push("/");
+          returnPage();
         }, 2000);
       } catch {
         openNotificationWithIcon("error");

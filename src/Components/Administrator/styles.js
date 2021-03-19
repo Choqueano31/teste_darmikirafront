@@ -8,6 +8,10 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 `;
 export const Title = styled.h1`
   color: white;

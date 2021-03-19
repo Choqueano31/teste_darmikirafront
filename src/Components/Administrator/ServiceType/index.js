@@ -1,19 +1,10 @@
-import React, { useState } from "react";
-import { Button, Col, Input, Row, Select, Card, Modal, message } from "antd";
-
+import { Button, Card, Modal, notification } from "antd";
 import "antd/dist/antd.css";
-import {
-  Column,
-  Container,
-  Label,
-  Line,
-  List,
-  Paragraph,
-  SubTitle,
-  Title,
-} from "../styles";
+import React, { useEffect, useState } from "react";
+import fireDb from "../../../firebase";
 import image from "../../../images/adm.png";
 import Adminstrador from "../index";
+import { Container, Label, Line, Paragraph, SubTitle, Title } from "../styles";
 import ServiceCreate from "./ServiceCreate";
 import ServiceUpdate from "./ServiceUpdate";
 function ServiceType(props) {
@@ -22,13 +13,40 @@ function ServiceType(props) {
   const [nextPage, setNextPage] = useState(false);
   const [pageEdit, setPageEdit] = useState(false);
   const [info, setInfo] = useState("");
-  const success = () => {
-    message.success("Tipo");
+  const [infoId, setInfoId] = useState("");
+  const [dataList, setDataList] = useState({});
+  const openNotificationWithIcon = (type) => {
+    if (type === "error") {
+      notification[type]({
+        message: "Não foi Possível Concluir",
+        description:
+          " Verifique sua conexão com a Internet e tente novamente. ",
+      });
+    } else {
+      notification[type]({
+        message: "Tipo de Atendimento Removido com Sucesso",
+      });
+    }
   };
-
-  const error = () => {
-    message.error("Algo deu erado");
-  };
+  async function onDelete() {
+    try {
+      await fireDb.child(`service/${infoId}`).remove((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+      openNotificationWithIcon("success");
+    } catch {
+      openNotificationWithIcon("error");
+    }
+  }
+  useEffect(() => {
+    fireDb.child("service").on("value", (snapshot) => {
+      if (snapshot.val() !== null) {
+        setDataList({ ...snapshot.val() });
+      }
+    });
+  }, []);
   function returnPage() {
     setReturnAdm(!returnAdm);
   }
@@ -47,29 +65,7 @@ function ServiceType(props) {
   function showModal() {
     setModalVisible(!modalVisible);
   }
-  const data = [
-    {
-      id: 1,
-      nome: "Limpeza de Motor",
-      descricao: "Limpeza de Cabeçotes",
-      Preco: "250,00",
-      Data: "25/02/2020",
-    },
-    {
-      id: 2,
-      nome: "Limpeza de vidro",
-      descricao: "Limpeza de Cabeçotes",
-      Preco: "250,00",
-      Data: "25/02/2020",
-    },
-    {
-      id: 3,
-      nome: "Limpeza de parachoque",
-      descricao: "Limpeza de Cabeçotes",
-      Preco: "250,00",
-      Data: "25/02/2020",
-    },
-  ];
+
   return (
     <>
       {returnAdm === false ? (
@@ -81,13 +77,14 @@ function ServiceType(props) {
                   <Modal
                     title="Deseja Excluir esse tipo de atendimento?"
                     visible={modalVisible}
-                    onOk={() => {}}
+                    onOk={() => {
+                      onDelete();
+                      showModal();
+                    }}
                     onCancel={() => {
                       showModal();
                     }}
-                  >
-                    <p>Some contents...</p>
-                  </Modal>
+                  ></Modal>
                   <Container
                     style={{
                       backgroundImage: ` url(${image})`,
@@ -106,7 +103,7 @@ function ServiceType(props) {
                       Voltar
                     </Button>
 
-                    <SubTitle> LISTA DE ATENDIMENTOS</SubTitle>
+                    <SubTitle> LISTAR TIPOS DE ATENDIMENTOS</SubTitle>
                     <Button
                       style={{ borderRadius: 5, marginTop: 25 }}
                       onClick={() => {
@@ -120,8 +117,7 @@ function ServiceType(props) {
                   <Paragraph>
                     <Line></Line>
                   </Paragraph>
-                  {data.map((item) => {
-                    const info = item;
+                  {Object.keys(dataList).map((id) => {
                     return (
                       <>
                         <Paragraph style={{ color: "black" }}>
@@ -129,10 +125,11 @@ function ServiceType(props) {
                             <Label>
                               <p>
                                 {" "}
-                                Nome do Atendimento: {item.nome} <br />
-                                Descrição do Atendimento: {item.descricao}{" "}
-                                <br /> Data de Criação: {item.data} <br />
-                                Preço Base: {item.preco}
+                                Nome do Atendimento: {dataList[id].name} <br />
+                                Descrição do Atendimento:{" "}
+                                {dataList[id].descricao} <br />
+                                Data de Criação: {dataList[id].data} <br />
+                                Preço Base: {dataList[id].preco}
                               </p>
                               <Button
                                 style={{
@@ -141,7 +138,8 @@ function ServiceType(props) {
                                   marginTop: 30,
                                 }}
                                 onClick={() => {
-                                  setInfo(info);
+                                  setInfo(dataList[id]);
+                                  setInfoId(id);
                                   showPageEdit();
                                 }}
                                 type="primary"
@@ -155,6 +153,9 @@ function ServiceType(props) {
                                   marginTop: 30,
                                 }}
                                 onClick={() => {
+                                  // setInfo(dataList[id]);
+                                  setInfoId(id);
+
                                   showModal();
                                 }}
                                 type="danger"
@@ -170,7 +171,7 @@ function ServiceType(props) {
                 </div>
               ) : (
                 <>
-                  <ServiceUpdate info={info} />
+                  <ServiceUpdate info={info} infoId={infoId} />
                 </>
               )}
             </div>

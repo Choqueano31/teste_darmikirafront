@@ -1,6 +1,9 @@
-import { Button, Input, InputNumber, message, notification } from "antd";
+import { Button, Input, notification } from "antd";
 import "antd/dist/antd.css";
+import { useFormik } from "formik";
+import moment from "moment";
 import React, { useState } from "react";
+import fireDb from "../../../../firebase";
 import image from "../../../../images/adm.png";
 import {
   Container,
@@ -10,12 +13,10 @@ import {
   SubTitle,
   Title,
 } from "../../styles";
-import { useFormik } from "formik";
 import ServiceType from "../index";
 const validate = (values) => {
   const errors = {};
 
-  console.log(values);
   if (!values.nome) {
     errors.nome = <p style={{ color: "red" }}>obrigatório</p>;
   }
@@ -32,6 +33,7 @@ const validate = (values) => {
 
 function ServiceCreate(props) {
   const [returnAdm, setReturnAdm] = useState(false);
+
   const openNotificationWithIcon = (type) => {
     if (type === "error") {
       notification[type]({
@@ -46,18 +48,17 @@ function ServiceCreate(props) {
       });
     }
   };
+
   function returnPage() {
     setReturnAdm(!returnAdm);
   }
-  function onChange(value) {
-    console.log("changed", value);
-  }
+
   const formik = useFormik({
     initialValues: {
       nome: "",
       descricao: "",
       preco: "",
-      data: new Date(),
+      data: moment(new Date()).format("DD/MM/YYYY"),
       // data: String(date),
     },
 
@@ -65,8 +66,23 @@ function ServiceCreate(props) {
 
     onSubmit: (values) => {
       try {
-        alert(JSON.stringify(values, null, 2));
+        fireDb.child("service").push(
+          {
+            name: values.nome,
+            descricao: values.descricao,
+            preco: values.preco,
+            data: moment(new Date()).format("DD/MM/YYYY"),
+          },
+          (err) => {
+            if (err) {
+              console.log(err);
+            }
+          }
+        );
         openNotificationWithIcon("success");
+        setTimeout(() => {
+          returnPage();
+        }, 1000);
       } catch {
         openNotificationWithIcon("error");
       }

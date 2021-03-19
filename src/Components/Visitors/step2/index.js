@@ -1,16 +1,17 @@
-import { Button, DatePicker, Input, Select, message, notification } from "antd";
+import { Button, DatePicker, Input, notification } from "antd";
 import "antd/dist/antd.css";
-import moment from "moment";
-import React, { useState } from "react";
 import { useFormik } from "formik";
-import { Label, Line, Paragraph, Container, Title } from "../styles";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import fireDb from "../../../firebase";
 import image from "../../../images/agenda.webp";
-import Visitors from "../step1";
 import { SubTitle } from "../../Administrator/styles";
+import Visitors from "../step1";
+import { Container, Label, Line, Paragraph, Title } from "../styles";
 const validate = (values) => {
   const errors = {};
 
-  console.log(values);
   if (!values.atendimento) {
     errors.atendimento = <p style={{ color: "red" }}>obrigatório</p>;
   }
@@ -31,6 +32,15 @@ function VisitorsStep2({ name, placa, motor }) {
   const [motor1] = useState(motor);
   const [date, setDate] = useState("");
   const [returnPage, setReturnPage] = useState(false);
+  const [dataList, setDataList] = useState({});
+  const history = useHistory();
+  useEffect(() => {
+    fireDb.child("service").on("value", (snapshot) => {
+      if (snapshot.val() !== null) {
+        setDataList({ ...snapshot.val() });
+      }
+    });
+  }, []);
   function previous() {
     setReturnPage(!returnPage);
   }
@@ -47,11 +57,7 @@ function VisitorsStep2({ name, placa, motor }) {
       });
     }
   };
-  const teste = [
-    { value: "1", label: "teste" },
-    { value: "1", label: "teste3" },
-    { value: "1", label: "teste4" },
-  ];
+
   const formik = useFormik({
     initialValues: {
       atendimento: "",
@@ -64,8 +70,26 @@ function VisitorsStep2({ name, placa, motor }) {
 
     onSubmit: (values) => {
       if (date !== "") {
-        alert(JSON.stringify(values, null, 2));
+        fireDb.child("schedule").push(
+          {
+            motor: motor1,
+            placa: placa1,
+            name: name1,
+            atendimento: values.atendimento,
+            descricao: values.descricao,
+            date: date,
+            status: "AGENDADO",
+          },
+          (err) => {
+            if (err) {
+              console.log(err);
+            }
+          }
+        );
         openNotificationWithIcon("success");
+        setTimeout(() => {
+          history.push("/");
+        }, 1000);
       } else {
         openNotificationWithIcon("error");
       }
@@ -112,17 +136,40 @@ function VisitorsStep2({ name, placa, motor }) {
           </Paragraph>
           <form onSubmit={formik.handleSubmit}>
             <Label>
+              <p>Escolha a hora e data para o Agendamento</p>
+              <div>
+                <DatePicker
+                  id="data"
+                  name="data"
+                  format="DD-MM-YYYY HH:mm"
+                  showTime={{ defaultValue: moment("00:00", "HH:mm") }}
+                  onChange={(e) => {
+                    setDate(moment(e).format("DD-MM-YYYY HH:mm"));
+                  }}
+                  // value={formik.values.data}
+                />
+                {/* {formik.errors.data ? (
+              <div style={{ marginLeft: 10 }}>{formik.errors.data}</div>
+            ) : null} */}
+              </div>
+            </Label>
+            <Label>
               <p>Informe o Tipo de Atendimento</p>
               <div>
                 <select
                   id="atendimento"
                   name="atendimento"
                   placeholder="Tipos de Atendimento"
+                  style={{ marginLeft: 80 }}
                   onChange={formik.handleChange}
                   value={formik.values.atendimento}
                 >
-                  {teste.map((item) => {
-                    return <option key={item.label}>{item.label}</option>;
+                  {Object.keys(dataList).map((id) => {
+                    return (
+                      <option key={dataList[id].name}>
+                        {dataList[id].name}
+                      </option>
+                    );
                   })}
                 </select>
                 {formik.errors.atendimento ? (
@@ -149,24 +196,6 @@ function VisitorsStep2({ name, placa, motor }) {
                     {formik.errors.descricao}
                   </div>
                 ) : null}
-              </div>
-            </Label>
-            <Label>
-              <p>Escolha a hora e data para o Agendamento</p>
-              <div>
-                <DatePicker
-                  id="data"
-                  name="data"
-                  format="DD-MM-YYYY HH:mm"
-                  showTime={{ defaultValue: moment("00:00", "HH:mm") }}
-                  onChange={(e) => {
-                    setDate(moment(e).format("DD-MM-YYYY HH:mm"));
-                  }}
-                  // value={formik.values.data}
-                />
-                {/* {formik.errors.data ? (
-              <div style={{ marginLeft: 10 }}>{formik.errors.data}</div>
-            ) : null} */}
               </div>
             </Label>
             <Label />

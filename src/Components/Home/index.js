@@ -12,6 +12,11 @@ function Home() {
         width: 1354,
         height: 749,
         backgroundImage: ` url(${image})`,
+        position: "fixed",
+        minWidth: "100%",
+        minHeight: "100%",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div
