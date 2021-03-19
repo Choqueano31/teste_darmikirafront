@@ -64,7 +64,7 @@ function Adminstrador() {
                         }}
                       >
                         {" "}
-                        ESCOLHA A OPÇÃO AO QUAL DESEJA PRESTAR ATENDIMENTO
+                        ESCOLHA A OPÇÃO A QUAL DESEJA PRESTAR ATENDIMENTO
                       </h4>
                       <Paragraph>
                         <Line></Line>
@@ -85,7 +85,7 @@ function Adminstrador() {
                             borderRadius: 5,
                             width: 300,
                             marginTop: 30,
-                            backgroundColor: "green",
+                            backgroundColor: " #28c86a  ",
                             color: "white",
                           }}
                           onClick={() => {
@@ -99,7 +99,7 @@ function Adminstrador() {
                             borderRadius: 5,
                             width: 300,
                             marginTop: 30,
-                            backgroundColor: "blue",
+                            backgroundColor: " #2f66fa ",
                             color: "white",
                           }}
                           onClick={() => {
@@ -113,7 +113,7 @@ function Adminstrador() {
                             borderRadius: 5,
                             width: 300,
                             marginTop: 30,
-                            backgroundColor: "red",
+                            backgroundColor: "  #e72929  ",
                             color: "white",
                           }}
                           onClick={() => {

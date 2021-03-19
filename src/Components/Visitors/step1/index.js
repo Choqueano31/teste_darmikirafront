@@ -164,7 +164,7 @@ function Visitors({ name1, placa1, motor1 }) {
                 style={{
                   borderRadius: 5,
                   width: 200,
-                  backgroundColor: "blue",
+                  backgroundColor: "#2f66fa",
                   color: "white",
                   cursor: "pointer",
                 }}

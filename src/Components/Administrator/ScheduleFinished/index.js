@@ -33,20 +33,27 @@ function ScheduleFinished() {
             <Title> ÁREA ADMINISTRATIVA</Title>
           </Container>
           <Label>
-            <Button
-              style={{ borderRadius: 5, marginTop: 25 }}
-              onClick={() => {
-                returnPage();
-              }}
-              type="danger"
-            >
-              Voltar
-            </Button>
-
-            <SubTitle style={{ marginRight: 250 }}>
-              {" "}
-              LISTA DE AGENDAMENTOS FINALIZADOS
-            </SubTitle>
+            <div>
+              <Button
+                style={{
+                  borderRadius: 5,
+                  marginTop: 25,
+                }}
+                onClick={() => {
+                  returnPage();
+                }}
+                type="danger"
+              >
+                Voltar
+              </Button>
+            </div>
+            <div>
+              <SubTitle style={{ marginLeft: 10 }}>
+                {" "}
+                LISTA DE AGENDAMENTOS FINALIZADOS
+              </SubTitle>
+            </div>
+            <div></div>
           </Label>
           <Paragraph>
             <Line></Line>
@@ -56,9 +63,100 @@ function ScheduleFinished() {
               return (
                 <>
                   <Paragraph style={{ color: "black" }}>
-                    <Card>
+                    <Card style={{ width: 700 }}>
                       <Label>
-                        <p>
+                        <div style={{ width: "60%" }}>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                            }}
+                          >
+                            <p style={{ fontWeight: "bold" }}>Nome: </p>
+                            {"  "}
+                            <p style={{ marginLeft: 10 }}>
+                              {" "}
+                              {dataList[id].name}
+                            </p>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                            }}
+                          >
+                            <p style={{ fontWeight: "bold" }}>Placa: </p>
+                            {"  "}
+                            <p style={{ marginLeft: 10 }}>
+                              {" "}
+                              {dataList[id].placa}
+                            </p>
+                            <p style={{ marginLeft: 10 }}></p>
+                            <p style={{ fontWeight: "bold" }}> Motor: </p>
+                            {"  "}
+                            <p style={{ marginLeft: 10 }}>
+                              {" "}
+                              {dataList[id].motor}
+                            </p>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                            }}
+                          >
+                            <p style={{ fontWeight: "bold" }}>
+                              Tipo de Atendimento:{" "}
+                            </p>
+                            {"  "}
+                            <p style={{ marginLeft: 10 }}>
+                              {" "}
+                              {dataList[id].atendimento}
+                            </p>
+                          </div>{" "}
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                            }}
+                          >
+                            <p style={{ fontWeight: "bold" }}>
+                              Data de Atendimento:{" "}
+                            </p>
+                            {"  "}
+                            <p style={{ marginLeft: 10 }}>
+                              {" "}
+                              {dataList[id].date}
+                            </p>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                            }}
+                          >
+                            <p style={{ fontWeight: "bold" }}>Motivo: </p>
+                            {"  "}
+                            <p style={{ marginLeft: 10 }}>
+                              {" "}
+                              {dataList[id].descricao}
+                            </p>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "flex-start",
+                            }}
+                          >
+                            <p style={{ fontWeight: "bold" }}>Status: </p>
+                            {"  "}
+                            <p style={{ marginLeft: 10 }}>
+                              {" "}
+                              {dataList[id].status}
+                            </p>
+                          </div>
+                        </div>
+                        {/* <p>
                           {" "}
                           Nome: {dataList[id].name} <br />
                           Placa do Veículo: {dataList[id].placa} / Motor:{" "}
@@ -70,7 +168,7 @@ function ScheduleFinished() {
                           Descrição Relatada: {dataList[id].descricao}
                           <br />
                           STATUS: {dataList[id].status}
-                        </p>
+                        </p> */}
                       </Label>
                     </Card>
                   </Paragraph>

@@ -7,59 +7,60 @@ function Home() {
   const history = useHistory();
 
   return (
-    <div
-      style={{
-        width: 1354,
-        height: 749,
-        backgroundImage: ` url(${image})`,
-        position: "fixed",
-        minWidth: "100%",
-        minHeight: "100%",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          backgroundImage: ` url(${image})`,
+          position: "fixed",
+          minWidth: "100%",
+          minHeight: "100%",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        <h2
+        <div
           style={{
-            color: "white",
-            marginTop: 50,
-            textShadow: "black 0.1em 0.1em 0.2em",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          BEM VINDO
-          <h5
+          <h2
             style={{
               color: "white",
+              marginTop: 50,
               textShadow: "black 0.1em 0.1em 0.2em",
             }}
           >
-            Você está no Nosso Serviço de Atendimento Online <br />
-          </h5>
-        </h2>
-        <Button
-          onClick={() => {
-            history.push("/services");
-          }}
-          style={{
-            marginTop: 150,
-            height: 50,
-            fontWeight: "bold",
-            fontSize: 15,
-          }}
-        >
-          {" "}
-          CADASTRAR AGENDAMENTO ONLINE
-        </Button>
+            BEM VINDO
+            <h5
+              style={{
+                color: "white",
+                textShadow: "black 0.1em 0.1em 0.2em",
+              }}
+            >
+              Você está no Nosso Serviço de Atendimento Online <br />
+            </h5>
+          </h2>
+
+          <Button
+            onClick={() => {
+              history.push("/services");
+            }}
+            style={{
+              marginTop: 150,
+
+              fontWeight: "bold",
+              fontSize: 15,
+            }}
+          >
+            {" "}
+            CADASTRAR AGENDAMENTO ONLINE
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

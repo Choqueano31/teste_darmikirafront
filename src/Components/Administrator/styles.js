@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   background: "#000";
   height: 500px;
-  width: 1354px;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -43,6 +43,7 @@ export const Label = styled.div`
   justify-content: space-evenly;
   margin-top: 20px;
 `;
+
 export const List = styled.div`
   display: flex;
   justify-content: space-evenly;

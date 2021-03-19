@@ -94,7 +94,7 @@ function ServiceType(props) {
                   </Container>
                   <Label>
                     <Button
-                      style={{ borderRadius: 5, marginTop: 25 }}
+                      style={{ borderRadius: 5, marginTop: 30 }}
                       onClick={() => {
                         returnPage();
                       }}
@@ -103,9 +103,12 @@ function ServiceType(props) {
                       Voltar
                     </Button>
 
-                    <SubTitle> LISTAR TIPOS DE ATENDIMENTOS</SubTitle>
+                    <SubTitle style={{ marginLeft: 10 }}>
+                      {" "}
+                      LISTAR TIPOS DE ATENDIMENTOS
+                    </SubTitle>
                     <Button
-                      style={{ borderRadius: 5, marginTop: 25 }}
+                      style={{ borderRadius: 5, marginTop: 30 }}
                       onClick={() => {
                         next();
                       }}
@@ -121,21 +124,67 @@ function ServiceType(props) {
                     return (
                       <>
                         <Paragraph style={{ color: "black" }}>
-                          <Card>
-                            <Label>
-                              <p>
-                                {" "}
-                                Nome do Atendimento: {dataList[id].name} <br />
-                                Descrição do Atendimento:{" "}
-                                {dataList[id].descricao} <br />
-                                Data de Criação: {dataList[id].data} <br />
-                                Preço Base: {dataList[id].preco}
-                              </p>
+                          <Card style={{ width: 700 }}>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                              }}
+                            >
+                              <div>
+                                <p style={{ fontWeight: "bold" }}>
+                                  Nome do Atendimento:{" "}
+                                </p>
+                                {"  "}
+                                <p style={{ marginLeft: 10 }}>
+                                  {" "}
+                                  {dataList[id].name}
+                                </p>
+                              </div>
+                              <div>
+                                <p style={{ fontWeight: "bold" }}>
+                                  Descrição do Atendimento:{" "}
+                                </p>
+                                {"  "}
+                                <p style={{ marginLeft: 10 }}>
+                                  {" "}
+                                  {dataList[id].descricao}
+                                </p>
+                              </div>
+                              <div>
+                                <p style={{ fontWeight: "bold" }}>
+                                  Preço Base:{" "}
+                                </p>
+                                {"  "}
+                                <p style={{ marginLeft: 10 }}>
+                                  {" "}
+                                  R$ {dataList[id].preco}
+                                </p>
+                              </div>
+                              <div>
+                                <p style={{ fontWeight: "bold" }}>
+                                  Data de Criação:{" "}
+                                </p>
+                                {"  "}
+                                <p style={{ marginLeft: 10 }}>
+                                  {" "}
+                                  R$ {dataList[id].data}
+                                </p>
+                              </div>
+                            </div>
+
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                              }}
+                            >
                               <Button
                                 style={{
+                                  width: 100,
                                   borderRadius: 5,
                                   marginLeft: 10,
-                                  marginTop: 30,
                                 }}
                                 onClick={() => {
                                   setInfo(dataList[id]);
@@ -148,9 +197,9 @@ function ServiceType(props) {
                               </Button>
                               <Button
                                 style={{
+                                  width: 100,
                                   borderRadius: 5,
                                   marginLeft: 10,
-                                  marginTop: 30,
                                 }}
                                 onClick={() => {
                                   // setInfo(dataList[id]);
@@ -162,7 +211,7 @@ function ServiceType(props) {
                               >
                                 Excluir
                               </Button>
-                            </Label>
+                            </div>
                           </Card>
                         </Paragraph>
                       </>

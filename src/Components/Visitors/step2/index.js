@@ -116,17 +116,18 @@ function VisitorsStep2({ name, placa, motor }) {
             iremos entrar em contato com você.
           </Paragraph>
           <Label>
-            <Button
-              style={{ borderRadius: 5, marginTop: 25 }}
-              onClick={() => {
-                previous();
-              }}
-              type="danger"
-            >
-              Voltar
-            </Button>
-
-            <SubTitle style={{ marginRight: 250 }}>
+            <div>
+              <Button
+                style={{ borderRadius: 5, marginTop: 25 }}
+                onClick={() => {
+                  previous();
+                }}
+                type="danger"
+              >
+                Voltar
+              </Button>
+            </div>
+            <SubTitle style={{ marginLeft: 10 }}>
               {" "}
               INFORMAÇÕES SOBRE O PROCEDIMENTO DESEJADO
             </SubTitle>
@@ -137,6 +138,7 @@ function VisitorsStep2({ name, placa, motor }) {
           <form onSubmit={formik.handleSubmit}>
             <Label>
               <p>Escolha a hora e data para o Agendamento</p>
+
               <div>
                 <DatePicker
                   id="data"
@@ -155,12 +157,12 @@ function VisitorsStep2({ name, placa, motor }) {
             </Label>
             <Label>
               <p>Informe o Tipo de Atendimento</p>
+
               <div>
                 <select
                   id="atendimento"
                   name="atendimento"
                   placeholder="Tipos de Atendimento"
-                  style={{ marginLeft: 80 }}
                   onChange={formik.handleChange}
                   value={formik.values.atendimento}
                 >
@@ -180,7 +182,8 @@ function VisitorsStep2({ name, placa, motor }) {
               </div>
             </Label>
             <Label>
-              <p style={{ marginLeft: 35 }}>Informe o Motivo do Atendimento</p>
+              <p>Informe o Motivo do Atendimento</p>
+
               <div>
                 <TextArea
                   id="descricao"
@@ -212,7 +215,7 @@ function VisitorsStep2({ name, placa, motor }) {
                 style={{
                   borderRadius: 5,
                   width: 200,
-                  backgroundColor: "blue",
+                  backgroundColor: "#2f66fa",
                   color: "white",
                   cursor: "pointer",
                 }}

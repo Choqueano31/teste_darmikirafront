@@ -180,8 +180,8 @@ function ServiceCreate(props) {
               <button
                 style={{
                   borderRadius: 5,
-                  width: 200,
-                  backgroundColor: "blue",
+                  width: 175,
+                  backgroundColor: "#2f66fa",
                   color: "white",
                   cursor: "pointer",
                 }}
