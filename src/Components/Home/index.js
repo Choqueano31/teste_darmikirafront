@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import image from "../../images/neg3.jpg";
+import image from "../../images/princ.jpeg";
 import { Button } from "../NavBar/NavBarElements";
 
 function Home() {

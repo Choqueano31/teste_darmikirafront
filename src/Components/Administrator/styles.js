@@ -59,6 +59,11 @@ export const Column = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-top: 20px;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #010606;
+  }
 `;
 export const SubTitle = styled.div`
   display: flex;

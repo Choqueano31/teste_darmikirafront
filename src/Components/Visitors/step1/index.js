@@ -2,7 +2,7 @@ import { Input, notification } from "antd";
 import "antd/dist/antd.css";
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import image from "../../../images/agenda.webp";
+import image from "../../../images/page3.jpeg";
 import { SubTitle } from "../../Administrator/styles";
 import VisitorsStep2 from "../step2";
 import { Container, Label, Line, Paragraph, Title } from "../styles";

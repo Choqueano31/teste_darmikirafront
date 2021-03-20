@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import React, { useState } from "react";
-import image from "../../images/admin.jpg";
+import image from "../../images/page2.jpeg";
 import ScheduleList from "../Administrator/ScheduleList";
 import {
   Column,

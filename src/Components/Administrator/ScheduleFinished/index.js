@@ -2,7 +2,7 @@ import { Button, Card } from "antd";
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import fireDb from "../../../firebase";
-import image from "../../../images/admin.jpg";
+import image from "../../../images/page2.jpeg";
 import Adminstrador from "../index";
 import { Container, Label, Line, Paragraph, SubTitle, Title } from "../styles";
 function ScheduleFinished() {
