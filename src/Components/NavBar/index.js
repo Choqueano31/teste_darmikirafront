@@ -1,6 +1,6 @@
 import React from "react";
 import image from "../../images/logo2.png";
-import { Bars, Nav, NavLink, NavMenu } from "./NavBarElements";
+import { Nav, NavLink, NavLink1, NavMenu } from "./NavBarElements";
 function NavBar() {
   return (
     <>
@@ -8,16 +8,16 @@ function NavBar() {
         <NavLink to="/">
           <img src={image} style={{ height: 50, width: 50 }} alt="logo" />
         </NavLink>
-        <Bars />
+        {/* <Bars /> */}
         <NavMenu>
-          <NavLink to="/" activeStyle>
+          <NavLink1 to="/" activeStyle>
             Página Inicial
-          </NavLink>
+          </NavLink1>
           <NavLink to="/services" activeStyle>
             Agendamento Online
           </NavLink>
           <NavLink to="/Administrator" activeStyle>
-            Adminstrador
+            Administrador
           </NavLink>
         </NavMenu>
         {/* <NavBtn>
