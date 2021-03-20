@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import image from "../../images/princ.jpeg";
+import image from "../../images/page4.png";
 import { Button } from "../NavBar/NavBarElements";
 
 function Home() {
@@ -40,7 +40,7 @@ function Home() {
                 textShadow: "black 0.1em 0.1em 0.2em",
               }}
             >
-              Você está no Nosso Serviço de Atendimento Online <br />
+              Você está no nosso serviço de atendimento online <br />
             </h5>
           </h2>
 

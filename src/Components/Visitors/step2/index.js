@@ -5,7 +5,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import fireDb from "../../../firebase";
-import image from "../../../images/page3.jpeg";
+import image from "../../../images/agend.jpg";
 import { SubTitle } from "../../Administrator/styles";
 import Visitors from "../step1";
 import { Container, Label, Line, Paragraph, Title } from "../styles";

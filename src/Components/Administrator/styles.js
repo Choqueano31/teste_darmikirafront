@@ -59,10 +59,48 @@ export const Column = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-top: 20px;
+`;
+export const ButtonGreen = styled.button`
+  border-radius: 5px;
+  width: 300px;
+  height: 30px;
+  margin-top: 30px;
+  background-color: #28c86a;
+  color: white;
+  cursor: pointer;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
+    background: green;
+    /* color: #010606; */
+    color: #fff;
+  }
+`;
+export const ButtonBlue = styled.button`
+  border-radius: 5px;
+  width: 300px;
+  height: 30px;
+  margin-top: 30px;
+  background-color: #2f66fa;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: blue;
+    color: #fff;
+  }
+`;
+export const ButtonRed = styled.button`
+  border-radius: 5px;
+  width: 300px;
+  height: 30px;
+  margin-top: 30px;
+  background-color: #e72929;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: red;
+    color: #fff;
   }
 `;
 export const SubTitle = styled.div`

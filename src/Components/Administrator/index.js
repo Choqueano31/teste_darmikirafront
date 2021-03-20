@@ -1,9 +1,12 @@
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import React, { useState } from "react";
-import image from "../../images/page2.jpeg";
+import image from "../../images/page2.jpg";
 import ScheduleList from "../Administrator/ScheduleList";
 import {
+  ButtonGreen,
+  ButtonBlue,
+  ButtonRed,
   Column,
   Container,
   Label,
@@ -80,7 +83,15 @@ function Adminstrador() {
                         >
                           Criar/Visualizar Tipos de Atendimentos
                         </Button>
-                        <Button
+                        <ButtonGreen
+                          onClick={() => {
+                            scheduleSet();
+                          }}
+                        >
+                          {" "}
+                          Visualizar Agendamentos
+                        </ButtonGreen>
+                        {/* <Button
                           style={{
                             borderRadius: 5,
                             width: 300,
@@ -93,8 +104,15 @@ function Adminstrador() {
                           }}
                         >
                           Visualizar Agendamentos
-                        </Button>{" "}
-                        <Button
+                        </Button>{" "} */}
+                        <ButtonBlue
+                          onClick={() => {
+                            scheduleFinishedSet();
+                          }}
+                        >
+                          Agendamentos Finalizados
+                        </ButtonBlue>
+                        {/* <Button
                           style={{
                             borderRadius: 5,
                             width: 300,
@@ -106,9 +124,16 @@ function Adminstrador() {
                             scheduleFinishedSet();
                           }}
                         >
-                          Agendamentos Finalizados
-                        </Button>{" "}
-                        <Button
+                         
+                        </Button>{" "} */}
+                        <ButtonRed
+                          onClick={() => {
+                            scheduleCancelSet();
+                          }}
+                        >
+                          Agendamentos Cancelados
+                        </ButtonRed>
+                        {/* <Button
                           style={{
                             borderRadius: 5,
                             width: 300,
@@ -121,7 +146,7 @@ function Adminstrador() {
                           }}
                         >
                           Agendamentos Cancelados
-                        </Button>
+                        </Button> */}
                       </Column>
 
                       <Label />

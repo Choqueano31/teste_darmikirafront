@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import moment from "moment";
 import React, { useState } from "react";
 import fireDb from "../../../../firebase";
-import image from "../../../../images/page2.jpeg";
+import image from "../../../../images/page2.jpg";
 import {
   Container,
   Label,
